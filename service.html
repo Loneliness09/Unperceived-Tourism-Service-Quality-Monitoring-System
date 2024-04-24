@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>旅游市场服务质量监控系统</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <style>
+    .feedback-container {
+  max-width: 96%;
+  margin: 0 0;
+  padding: 20px;
+}
+
+.feedback-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.feedback-description {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 2%;
+}
+
+.flex {
+  width: 80%;
+  display: flex;
+}
+
+.flex label {
+  width: 50%;
+}
+
+.flex .right {
+  padding: 0.8%;
+  float: right;
+}
+
+.form-container {
+  display: flex;
+}
+
+.form-check {
+  width: 800px;
+  height: auto; 
+}
+
+.form-right {
+  float: right;
+  width: 20%;
+  display: flex;
+}
+
+.form-right.left {
+  float: left;
+}
+
+.form-right.right {
+  float: right;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-control-file {
+  display: block;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+}
+
+.pd {
+  margin-bottom: 0%;
+}
+  </style>
+</head>
+
+<body>
+  <div class="bnt">
+    <div class="topbnt_left fl">
+      <ul>
+        <li class="active"><a href="./home.html">首页</a></li>
+        <li><a title="暂未开发">问题聚焦</a></li>
+        <li><a href="./index.html">舆情分析</a></li>
+        <li><a href="./link.html">旅游市场</a></li>
+      </ul>
+    </div>
+    <h1 class="tith1 fl">旅游市场服务质量监控</h1>
+    <div class="fr topbnt_right">
+      <ul>
+        <li><a title="时间"><span id="clock"></span></a></li>
+        <li><a href="./about.html">关于</a></li>
+        <li><a href="./service.html">服务</a></li>
+        <li><a href="./cloud.html">词云</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="left1 pleft1" style="width: 100%;">
+    <div class="plefttoday" style="height: 96.5%; background-image: url(./img/pulefttop.png);">
+      <div style="width: 50%;">
+        <h1 style="padding-top: 3.5%; color: cyan;">用户反馈</h1>
+      </div>
+      <div class="left2_table hdleft2_table"
+        style="margin-top: 2%; height: 86%;margin-left: 2.5%; width: 95%; font-size: 18px;">
+        <div class="feedback-container">
+          <ul>
+            <li>
+              <p class="feedback-description">您的宝贵意见将帮助我们不断完善和优化系统</p>
+            </li>
+            <li class="bg">
+              <div class="form-group">
+                <label for="feedback-type">反馈类型</label>
+                <select id="feedback-type" class="form-control">
+                  <option value="system-issue">系统问题</option>
+                  <option value="user-experience">用户体验</option>
+                  <option value="location-review">地点评价</option>
+                </select>
+              </div>
+            </li>
+            <li>
+              <div class="form-group">
+                <label for="feedback-description">问题描述</label>
+                <textarea id="feedback-description" class="form-control" rows="5" placeholder="请描述您的反馈..."></textarea>
+              </div>
+            </li>
+            <li class="bg">
+              <div class="form-group flex pd">
+                <label for="feedback-attachment">附件上传</label>
+                <input type="file" id="feedback-attachment" class="form-control-file right">
+              </div>
+            </li>
+            <li>
+              <div class="form-group">
+                <label for="feedback-name">姓名</label>
+                <input type="text" id="feedback-name" class="form-control" placeholder="请输入您的姓名">
+              </div>
+            </li>
+            <li class="bg">
+              <div class="form-group">
+                <label for="feedback-contact">联系方式</label>
+                <input type="text" id="feedback-contact" class="form-control" placeholder="请输入联系电话或邮箱">
+              </div>
+            </li>
+            <li>
+              <div class="form-container">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="feedback-follow-up">
+                  <label class="form-check-label" for="feedback-follow-up">希望得到工作人员的反馈</label>
+                </div>
+                <div class="form-right">
+                  <button type="button" class="btn btn-primary left" onclick="submitFeedback()">提交</button>
+                  <button type="button" class="btn btn-secondary right" onclick="resetForm()">重置</button>
+                </div>
+              </div>
+              
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script>
+    function displayTime() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+
+      hours = (hours < 10 ? "0" : "") + hours;
+      minutes = (minutes < 10 ? "0" : "") + minutes;
+      seconds = (seconds < 10 ? "0" : "") + seconds;
+
+      var timeString = hours + ":" + minutes + ":" + seconds;
+
+      document.getElementById("clock").innerHTML = timeString;
+    }
+
+    setInterval(displayTime, 500);
+  </script>
+  <script>
+    // 问题反馈页面的JavaScript交互代码
+  function submitFeedback() {
+    const feedbackType = document.getElementById('feedback-type').value;
+    const feedbackDescription = document.getElementById('feedback-description').value;
+    const feedbackAttachment = document.getElementById('feedback-attachment').files[0];
+    const feedbackName = document.getElementById('feedback-name').value;
+    const feedbackContact = document.getElementById('feedback-contact').value;
+    const feedbackFollowUp = document.getElementById('feedback-follow-up').checked;
+
+    // 将反馈信息发送到后端
+    // ...
+
+    // 显示反馈提交成功的提示
+    alert('反馈提交成功!');
+
+    // 清空表单
+    resetForm();
+  }
+
+  function resetForm() {
+    document.getElementById('feedback-type').value = 'system-issue';
+    document.getElementById('feedback-description').value = '';
+    document.getElementById('feedback-attachment').value = '';
+    document.getElementById('feedback-name').value = '';
+    document.getElementById('feedback-contact').value = '';
+    document.getElementById('feedback-follow-up').checked = false;
+  }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>旅游市场服务质量监控系统</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+  
+</head>
+
+<body>
+  <div class="bnt">
+    <div class="topbnt_left fl">
+      <ul>
+        <li><a href="./home.html">首页</a></li>
+        <li><a title="暂未开发">问题聚焦</a></li>
+        <li><a href="./index.html">舆情分析</a></li>
+        <li class="active"><a href="./link.html">旅游市场</a></li>
+      </ul>
+    </div>
+    <h1 class="tith1 fl">旅游市场服务质量监控</h1>
+    <div class="fr topbnt_right">
+      <ul>
+        <li><a title="时间"><span id="clock"></span></a></li>
+        <li><a href="./about.html">关于</a></li>
+        <li><a href="./service.html">服务</a></li>
+        <li><a href="./cloud.html">词云</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="left1 pleft1" style="width: 100%;">
+    <div class="plefttoday" style="height: 96.5%; background-image: url(./img/pulefttop.png);">
+      <div style="width: 50%;">
+        <h1 style="padding-top: 3.5%; color: cyan;">旅游市场情况</h1>
+      </div>
+      <div class="left2_table hdleft2_table"
+        style="margin-top: 2%; height: 86%;margin-left: 2.5%; width: 95%; font-size: 18px;">
+        <ul>
+          <!-- link -->
+
+            <li >
+                    <i><a class='aaa' href=' https://www.gov.cn/lianbo/bumen/202307/content_6891772.htm'>中华人民共和国文化和旅游部2022年文化和旅游发展统计公报 </a></i><br>
+                </p>
+            </li>
+
+            <li class="bg">
+                    <i><a class='aaa' href=' https://www.gov.cn/lianbo/bumen/202402/content_6931178.htm'>2023年国内旅游数据情况 </a></i><br>
+                </p>
+            </li>
+
+            <li >
+                    <i><a class='aaa' href=' https://www.mct.gov.cn/whzx/zsdw/zglyyjy/202402/t20240205_951187.html'>《2023年中国旅游经济运行分析与2024年发展预测》：2024年旅游市场主要指标或超历史最高水平 </a></i><br>
+                </p>
+            </li>
+
+            <li class="bg">
+                    <i><a class='aaa' href=' https://www.traveldaily.cn/article/179832'>《中国国内旅游发展报告（2023-2024）》：国内旅游市场强势回暖，活力再现（环球旅讯） </a></i><br>
+                </p>
+            </li>
+
+            <li >
+                    <i><a class='aaa' href=' https://www.traveldaily.cn/article/173504'>《世界旅游经济趋势报告（2023）》：2023年全球旅游总人次将达到107.8亿人次（环球旅讯） </a></i><br>
+                </p>
+            </li>
+
+            <li class="bg">
+                    <i><a class='aaa' href=' https://zhuanlan.zhihu.com/p/671796452'>马蜂窝2023年旅游大数据报告 </a></i><br>
+                </p>
+            </li>
+
+            <li >
+                    <i><a class='aaa' href=' https://www.mckinsey.com.cn/%e9%87%8d%e8%bf%94%e5%a2%9e%e9%95%bf%ef%bc%9a%e4%b8%ad%e5%9b%bd%e6%97%85%e6%b8%b8%e5%b8%82%e5%9c%ba%e7%9a%84%e5%89%8d%e7%9e%bb%e6%80%9d%e8%80%83/'>重返增长：中国旅游市场的前瞻思考 </a></i><br>
+                </p>
+            </li>
+
+            <li class="bg">
+                    <i><a class='aaa' href=' https://new.qq.com/rain/a/20240210A04QWE00'>28省市发布2023年旅游“成绩单”及2024年旅游发展目标 </a></i><br>
+                </p>
+            </li>
+
+            <li >
+                    <i><a class='aaa' href=' https://www.gov.cn/zhengce/zhengceku/202311/content_6914996.htm'>文化和旅游部关于印发《国内旅游提升计划（2023—2025年）》的通知 </a></i><br>
+                </p>
+            </li>
+
+            <li class="bg">
+                    <i><a class='aaa' href=' https://www.ctaweb.org.cn/cta/ztyj/202401/09f2de14091341dcabeed9f825d5addd.shtml'>戴斌 | 繁荣开始了！——2023年旅游经济回顾与2024年展望 </a></i><br>
+                </p>
+            </li>
+
+            <li >
+                    <i><a class='aaa' href=' https://www.gov.cn/zhengce/content/2022-01/20/content_5669468.htm'>国务院关于印发“十四五”旅游业发展规划的通知 </a></i><br>
+                </p>
+            </li>
+
+            <li class="bg">
+                    <i><a class='aaa' href=' https://www.gov.cn/zhengce/content/202309/content_6907051.htm'>国务院办公厅印发《关于释放旅游消费潜力推动旅游业高质量发展的若干措施》的通知 </a></i><br>
+                </p>
+            </li>        </ul>
+      </div>
+    </div>
+  </div>
+  <script>
+    function displayTime() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+
+      hours = (hours < 10 ? "0" : "") + hours;
+      minutes = (minutes < 10 ? "0" : "") + minutes;
+      seconds = (seconds < 10 ? "0" : "") + seconds;
+
+      var timeString = hours + ":" + minutes + ":" + seconds;
+
+      document.getElementById("clock").innerHTML = timeString;
+    }
+
+    setInterval(displayTime, 500);
+  </script>
+</body>
+
+</html>

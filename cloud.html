@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>旅游市场服务质量监控系统</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2.1.0/dist/echarts-wordcloud.min.js"></script>
+</head>
+
+<body>
+  <div class="bnt">
+    <div class="topbnt_left fl">
+      <ul>
+        <li><a href="./home.html">首页</a></li>
+        <li><a title="暂未开发">问题聚焦</a></li>
+        <li><a href="./index.html">舆情分析</a></li>
+        <li><a href="./link.html">旅游市场</a></li>
+      </ul>
+    </div>
+    <h1 class="tith1 fl">旅游市场服务质量监控</h1>
+    <div class="fr topbnt_right">
+      <ul>
+        <li><a title="时间"><span id="clock"></span></a></li>
+        <li><a href="./about.html">关于</a></li>
+        <li><a href="./service.html">服务</a></li>
+        <li class="active"><a href="./cloud.html">词云</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="left1 pleft1" style="width: 100%;">
+    <div class="plefttoday" style="height: 96.5%; background-image: url(./img/pulefttop.png);">
+      <div style="width: 50%;">
+        <h1 style="padding-top: 3.5%; color: cyan;">词云图</h1>
+      </div>
+      <div class="left2_table hdleft2_table"
+        style="margin-top: 2%; height: 86%;margin-left: 2.5%; width: 95%; font-size: 18px;"
+        id="word-cloud">
+
+      </div>
+    </div>
+  </div>
+  <script>
+    function displayTime() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+
+      hours = (hours < 10 ? "0" : "") + hours;
+      minutes = (minutes < 10 ? "0" : "") + minutes;
+      seconds = (seconds < 10 ? "0" : "") + seconds;
+
+      var timeString = hours + ":" + minutes + ":" + seconds;
+
+      document.getElementById("clock").innerHTML = timeString;
+    }
+
+    setInterval(displayTime, 500);
+  </script>
+  <script src="js/cloud.js"></script>
+</body>
+</html>

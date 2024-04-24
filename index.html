@@ -1,0 +1,964 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>旅游市场服务质量监控系统</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <script src="js/echarts.min.js" charset="utf-8"></script>
+  <script type="text/javascript"
+    src="https://api.map.baidu.com/api?v=2.0&type=web&ak=5ieMMexWmzB9jivTq6oCRX9j"></script>
+  <script type="text/javascript" src="js/baidu.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
+
+</head>
+
+<body>
+  <div class="bnt">
+    <div class="topbnt_left fl">
+      <ul>
+        <li><a href="./home.html">首页</a></li>
+        <li><a title="暂未开发">问题聚焦</a></li>
+        <li class="active"><a href="./index.html">舆情分析</a></li>
+        <li><a href="./link.html">旅游市场</a></li>
+      </ul>
+    </div>
+    <h1 class="tith1 fl">旅游市场服务质量监控</h1>
+    <div class="fr topbnt_right">
+      <ul>
+        <li><a title="时间"><span id="clock"></span></a></li>
+        <li><a href="./about.html">关于</a></li>
+        <li><a href="./service.html">服务</a></li>
+        <li><a href="./cloud.html">词云</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="left1 pleft1">
+    <div class="plefttoday">
+      <h2 class="tith2">评论统计(较上月)</h2>
+      <div class="lefttoday_tit" style=" height:8%">
+        <!-- keyword -->
+               <p class="fl">关键字：长影世纪城</p>
+        <p class="fr">2024-04-09</p>
+      </div>
+      <div class="lefttoday_number">
+        <div class="widget-inline-box text-center fl">
+          <p>评论数</p>
+          <!-- comment1 -->
+          <h3 class="ceeb1fd">499</h3>
+          <h4 class="text-muted">环比<img src="img/iconup.png" height="16" />480.23%</h4>
+        </div>
+        <div class="widget-inline-box text-center fl">
+          <p>回复数</p>
+          <!-- comment2 -->
+          <h3 class="c24c9ff">213</h3>
+          <h4 class="text-muted">环比<img src="img/iconup.png" height="16" />261.02%</h4>
+        </div>
+        <div class="widget-inline-box text-center fl">
+          <p>点赞量</p>
+          <!-- comment3 -->
+         <h3 class="cffff00">1722</h3>
+          <h4 class="text-muted">环比<img src="img/iconup.png" height="16" />20.42%</h4>        </div>
+        <div class="widget-inline-box text-center fl">
+          <p>分享量</p>
+          <!-- comment4 -->
+         <h3 class="c11e2dd">811</h3>
+          <h4 class="text-muted">环比<img src="img/icondown.png" height="16" />-15.87%</h4>        </div>
+      </div>
+    </div>
+    <div class="lpeftmidbot">
+      <h2 class="tith2">国内旅游出行(人次)</h2>
+      <div id="lpeftbot" class="lpeftmidbotcont"></div>
+    </div>
+    <div class="lpeftbot">
+      <h2 class="tith2">每月热度统计</h2>
+      <div id="lpeftmidbot" class="lpeftbotcont"></div>
+    </div>
+  </div>
+  <div class="left2">
+    <div class="pleftbox2top">
+      <h2 class="tith2">发帖IP占比</h2>
+      <div id="pleftbox2top" class="pleftbox2topcont"></div>
+    </div>
+    <div class="pleftbox2midd">
+      <h2 class="tith2">平台热度TOP5</h2>
+      <div class="pvr fl  lpeftb2otcont1 hdtop" style=" height:82%;">
+        <ul>
+          <li class="hot1">1</li>
+          <li class="hot2">2</li>
+          <li class="hot3">3</li>
+          <li class="hot4">4</li>
+          <li class="hot5">5</li>
+        </ul>
+        <div id="pleftbox2bott_cont" class="pleftbox2middcont" style=" height:100%;"></div>
+      </div>
+    </div>
+    <div class="lpeft2bot">
+      <h2 class="tith2 ">国内旅游市场规模变化(亿元)</h2>
+      <div id="prbottom_box1" class="lpeftb2otcont"></div>
+
+    </div>
+  </div>
+  </div>
+  <div class="mrbox prbox">
+    <div class="hdmrbox_top">
+      <div class="mrbox_top_midd">
+        <div class="hdmrboxtm-mbox">
+          <h2 class="tith2 pt1">地图分析</h2>
+          <div class="mrboxtm-map hdmrboxtm-map" id="map_b">
+          </div>
+        </div>
+        <div class="pmrboxbottom">
+          <h2 class="tith2 pt1">评论情况</h2>
+          <div id="pmrboxbottom" class="pmrboxbottomcont"></div>
+        </div>
+        <div class="mrbox_bottom_bott">
+          <div class="rbottom_box1 hdwid">
+            <h2 class="tith2">评论领域</h2>
+            <div id="prbottom_box2" class="prbottom_box1cont"></div>
+          </div>
+          <div class="rbottom_box2 hdwid">
+            <h2 class="tith2">关键词</h2>
+            <div id="pleftbox2midd" class="prbottom_box1cont"></div>
+          </div>
+        </div>
+      </div>
+      <div class="mrbox_top_right">
+        <div class="hdrightboxtop">
+          <h2 class="tith2">视频列表</h2>
+          <div class="lefttoday_tit" style="height:4%">
+            <p class="fl">类别：视频</p>
+            <!-- time -->
+       <p class="fr">时间:2019-05至2024-04</p>
+          </div>
+          <div class="left2_table hdleft2_table">
+            <ul>
+              <!-- vocal -->
+
+            <li >
+                <p class="fl"><b>大大孟孟-玩乐吃喝</b><br>
+                    <p class="fr pt17">2024-04-07 15:44</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7355027792938945827>冬日走马观花吉林长春长影世纪城 #游乐场 #游乐园 #长影世纪城 #冰山上的来客 #甲午风云</a></i><br>
+                </p>
+            </li>
+            <li class="bg">
+                <p class="fl"><b>长春小饭桶</b><br>
+                    <p class="fr pt17">2024-04-05 14:16</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7354262940964375817>长影世纪城日场通玩门票来袭#长影世纪城旅行推荐 #亲子游玩好去处 #周末去哪玩 #长春游玩推荐</a></i><br>
+                </p>
+            </li>
+            <li >
+                <p class="fl"><b>我是刘能</b><br>
+                    <p class="fr pt17">2024-04-05 08:02</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7354166507481484556>天暖了长影世纪城也开园啦。一大一小全天畅玩日场票两人100多，10多功能场馆随意看亲子溜娃好去处#旅行推荐官 #探索世界 #游玩攻略 #带你看世界 #主题乐园</a></i><br>
+                </p>
+            </li>
+            <li class="bg">
+                <p class="fl"><b>马老师在长春</b><br>
+                    <p class="fr pt17">2024-04-03 10:17</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7353459119434583322>长影世纪城春游民俗季来啦！开园活动很给力！清明小长假，就来这里吧！#春季带娃必去长影世纪城#春游民俗季到长影世纪城#6号地铁去长影</a></i><br>
+                </p>
+            </li>
+            <li >
+                <p class="fl"><b>干饭猴逛东北</b><br>
+                    <p class="fr pt17">2024-04-02 21:58</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7353268701216410918>长影世纪城开园了，带孩子去玩有一大一小票#长影世纪城</a></i><br>
+                </p>
+            </li>
+            <li class="bg">
+                <p class="fl"><b>青春吉林</b><br>
+                    <p class="fr pt17">2024-04-02 11:20</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7353104222239411496>当你乘坐轻轨六号线来到长影世纪城，将会体验到......@长影世纪城 #青年打卡长影世纪城 #来长影世纪城赴一场世纪之约  #长影世纪城抖来嗨#长影世纪城</a></i><br>
+                </p>
+            </li>
+            <li >
+                <p class="fl"><b>82年的龙叔</b><br>
+                    <p class="fr pt17">2024-04-01 18:33</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7352844752955493667>清明小长假去哪玩？长影世纪城有活动啦！乘坐漂亮的6号地铁去长影吧！#长影世纪城旅行推荐 #长春游玩推荐 #亲子游玩好去处 #清明去哪玩#6号地铁去长影</a></i><br>
+                </p>
+            </li>
+            <li class="bg">
+                <p class="fl"><b>笨猫猫</b><br>
+                    <p class="fr pt17">2024-03-31 20:14</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7352499782658706740>周末和假期乘坐长春地铁6号线来长影世纪城玩吧#春季带娃必去长影世纪城 #春游民俗季到长影世纪城#6号地铁去长影#吃喝玩乐在长春 #亲子游玩好去处</a></i><br>
+                </p>
+            </li>
+            <li >
+                <p class="fl"><b>熠熠星辰💫</b><br>
+                    <p class="fr pt17">2024-03-24 22:13</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7349932893797453091>来长春一定要打卡长影世纪城#旅行推荐官 #抖音看世界</a></i><br>
+                </p>
+            </li>
+            <li class="bg">
+                <p class="fl"><b>田亮地盘</b><br>
+                    <p class="fr pt17">2024-02-20 20:16</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7337656968313687308>长影世纪城作为长春的5A景区也开放了夜场，记得上一次去这里还是十几年前了！真心建议参照方特更新下硬件设施，加强宣传力度，也可以成为长春吸引外地游客的打卡地！#长春 #航拍 #长影世……版本过低，升级后可展示全部信息</a></i><br>
+                </p>
+            </li>
+            <li >
+                <p class="fl"><b>莫离逛辽源</b><br>
+                    <p class="fr pt17">2024-02-13 09:47</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7334897173768801536>长影世纪城免门票了，没来过的快来体验一把，电影的魅力吧#长影世纪城旅行推荐 #旅行推荐官 #长春游玩推荐</a></i><br>
+                </p>
+            </li>
+            <li class="bg">
+                <p class="fl"><b>挣钱买大G</b><br>
+                    <p class="fr pt17">2024-01-25 13:14</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7327899952951184649>长影世纪城夜场值得去么？时间在流逝， 进到这里仿佛回到了小时候， 长影一直没变， 还是小时候的样子， 我的童年！   #图文伙伴计划2024#长影世纪城 #亲子游玩好去处 #周末去……版本过低，升级后可展示全部信息</a></i><br>
+                </p>
+            </li>
+            <li >
+                <p class="fl"><b>太阳当空照NANA</b><br>
+                    <p class="fr pt17">2024-01-16 12:58</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7324555930165742899>全国文旅放大招了 来跟我沉浸式体验长影世纪城！#长影世纪城旅行推荐   #长春玩乐 #长春文旅#全国文旅都开始放大招了 #全国文旅局长卷起来</a></i><br>
+                </p>
+            </li>
+            <li class="bg">
+                <p class="fl"><b>熊志说车</b><br>
+                    <p class="fr pt17">2024-01-16 10:01</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7324510472739261711>尔滨确实出息了，但我要去长春尝尝鲜，看二人转，吃铁锅炖，再去长影世纪城耍一哈#长春一日游#长影世纪城旅行推荐#长春玩乐#长春文旅 #东北旅游攻略</a></i><br>
+                </p>
+            </li>
+            <li >
+                <p class="fl"><b>木子李的快乐星球</b><br>
+                    <p class="fr pt17">2024-01-15 22:19</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7324329515189046579>长影世纪城，不仅是一次游乐的体验，更是一场充满魔幻与科技的梦幻之旅#长影世纪城旅行推荐   #长春玩乐 #长春文旅#东北旅游攻略 #小土豆 @长春文旅</a></i><br>
+                </p>
+            </li>
+            <li class="bg">
+                <p class="fl"><b>AI暴走的栾龘龘VLOG</b><br>
+                    <p class="fr pt17">2023-11-24 16:55</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7304949618171809024>一镜到底拍摄古堡惊魂#威廉古堡 #景点打卡 #长影世纪城抖来浪</a></i><br>
+                </p>
+            </li>
+            <li >
+                <p class="fl"><b>乐哥游世界</b><br>
+                    <p class="fr pt17">2023-09-15 19:13</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7279009101403688233>长春5A级景区长影世纪城特惠票来了！刚刚上线了一个让人无法拒绝的给力价格，一票畅玩整个园区+非遗打铁花+露天蹦野迪+各种奇异灯光秀等！特惠数量不多，先囤不后悔！#长影世纪城 #亲子……版本过低，升级后可展示全部信息</a></i><br>
+                </p>
+            </li>
+            <li class="bg">
+                <p class="fl"><b>长春森钰儿</b><br>
+                    <p class="fr pt17">2023-08-13 19:58</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7266775028111363368>长影世纪城的夜场光影节开始了，这下大长春夜生活有了好去处，遛娃的好地方#吃喝玩乐dou起来 #人山人海太热闹了 #亲子游玩好去处 #我的城市玩乐攻略 #旅行推荐官</a></i><br>
+                </p>
+            </li>
+            <li >
+                <p class="fl"><b>♛Ling 💋</b><br>
+                    <p class="fr pt17">2023-08-03 18:42</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7263044549461757238>长影世纪城最最最刺激的项目华夏翱翔、星际探险～小朋友玩过啦～玩了又玩的那种～你的胆量超乎了我的想象～👍🏻</a></i><br>
+                </p>
+            </li>
+            <li class="bg">
+                <p class="fl"><b>桃小C不淘～</b><br>
+                    <p class="fr pt17">2023-06-25 19:32</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7248585077251231028>#长影世纪城 62没去的赶紧去。再不去又涨了。#吃喝玩乐在长春 #亲子游玩好去处 #周末去哪玩 #长春网红打卡地</a></i><br>
+                </p>
+            </li>
+            <li >
+                <p class="fl"><b>吃喝玩乐搜索</b><br>
+                    <p class="fr pt17">2023-06-06 12:38</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7241427723191602484>62能去俩人，这还等啥呢，刷到的赶紧囤，随时涨价#亲子游玩好去处 #周末去哪玩 #遛娃好去处 #旅行推荐官 #长春游玩推荐</a></i><br>
+                </p>
+            </li>
+            <li class="bg">
+                <p class="fl"><b>冯巍</b><br>
+                    <p class="fr pt17">2023-05-25 17:36</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7237051506791419140>大家可以参考我去长影世纪城的路线不用多排队，也不走冤枉路！#周末去哪玩 #宣传家乡旅游文化 #长影世纪城 #我为家乡代言 #家乡推荐官</a></i><br>
+                </p>
+            </li>
+            <li >
+                <p class="fl"><b>浙江吕同学（实习前版）</b><br>
+                    <p class="fr pt17">2023-05-08 17:37</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7230743516849130764>花销vlog｜这一站 长影世纪城 #vlog日常 #女大学生日常生活 #记录真实生活 #周末去哪玩 #旅行  我重新发一下 方才系统出错了@抖音小助手 @DOU+小助手</a></i><br>
+                </p>
+            </li>
+            <li class="bg">
+                <p class="fl"><b>小张出去玩</b><br>
+                    <p class="fr pt17">2023-05-03 04:24</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7228683457474366735>长影世纪城重新开园了，该怎么玩这条攻略一定要看 #你在现场看更加震撼 #我的城市玩乐攻略</a></i><br>
+                </p>
+            </li>
+            <li >
+                <p class="fl"><b>长春探店小淘气</b><br>
+                    <p class="fr pt17">2023-05-01 12:32</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7228067220708986112>长影世纪城，值得一去，🈶活动快囤～#心动五一 #五一玩乐自由 #是时候安排一下了 #长影世纪城 #抖音本地流量来了</a></i><br>
+                </p>
+            </li>
+            <li class="bg">
+                <p class="fl"><b>娇姐逛世界</b><br>
+                    <p class="fr pt17">2023-04-30 16:56</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7227764203665313081>长影世纪城又开新馆啦，5A景区一定要去玩哦#心动五一 #亲子游玩好去处 #旅行推荐官 #周边游 #抖音团购优惠</a></i><br>
+                </p>
+            </li>
+            <li >
+                <p class="fl"><b>好物推荐君丶小楼</b><br>
+                    <p class="fr pt17">2023-04-21 09:53</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7224315325624487168>人的一生中一定要去旅游打卡一次的景色之吉林长春长影世纪城。#旅行推荐官 #旅行 #风景 #旅游 #带你看风景 @DOU+小助手 @DOU+上热门</a></i><br>
+                </p>
+            </li>
+            <li class="bg">
+                <p class="fl"><b>吃喝玩乐团购联盟</b><br>
+                    <p class="fr pt17">2023-04-20 09:59</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7223945874110516514>长影世纪城周二周三周四通票只要54元，一米四以下免费，从来没有这么低的价格，先囤，下架就没有了，不用随时可退#优惠活动火爆进行中 #五一热闹模式已提前开启 #五一旅游景点推荐 #感……版本过低，升级后可展示全部信息</a></i><br>
+                </p>
+            </li>
+            <li >
+                <p class="fl"><b>长春逛吃猴猴</b><br>
+                    <p class="fr pt17">2023-04-20 08:38</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7223924874253749565>长影世纪城游玩攻略。游玩顺序 非常实验室 排队十五分钟 12：10的场次 13分钟的3D动画电影，入口领取眼镜👓，放映期间馆内会吐泡泡、呲水、射灯闪光。 😭馆里有小孩吓哭了，带幼儿……版本过低，升级后可展示全部信息</a></i><br>
+                </p>
+            </li>
+            <li class="bg">
+                <p class="fl"><b>旅行推荐官大兵</b><br>
+                    <p class="fr pt17">2023-04-13 18:03</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7221472937260404028>长影世纪城是一家电影主题公园，它模仿了好莱坞环球影城与迪斯尼游乐园的风格，不仅有拍摄区，还有激光悬浮电影#创作灵感 @抖音小助手 @DOU+小助手 #长影世纪城 #旅行推荐官大兵</a></i><br>
+                </p>
+            </li>
+            <li >
+                <p class="fl"><b>瞰吉林</b><br>
+                    <p class="fr pt17">2022-06-26 08:30</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/7112952287168974094>#长影世纪城#长春 #每一帧都是热爱 </a></i><br>
+                </p>
+            </li>
+            <li class="bg">
+                <p class="fl"><b>一个人穷游中国</b><br>
+                    <p class="fr pt17">2019-05-24 13:57</p>
+                    <i><a class='aaa' href=https://www.douyin.com/video/6694468740743954951>长春的长影世纪城，5A级景区</a></i><br>
+                </p>
+            </li>              <!-- end vocal -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script>
+    function displayTime() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+
+      hours = (hours < 10 ? "0" : "") + hours;
+      minutes = (minutes < 10 ? "0" : "") + minutes;
+      seconds = (seconds < 10 ? "0" : "") + seconds;
+
+      var timeString = hours + ":" + minutes + ":" + seconds;
+
+      document.getElementById("clock").innerHTML = timeString;
+    }
+
+    setInterval(displayTime, 500);
+  </script>
+  <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('lpeftmidbot'));
+    option = {
+      backgroundColor: 'rgba(1,202,217,.2)',
+      grid: {
+        left: 50,
+        right: 20,
+        top: 45,
+        bottom: 30
+      },
+      legend: {
+        top: 10,
+        textStyle: {
+          fontSize: 10,
+          color: 'rgba(255,255,255,.7)'
+        },
+        data: ['评论数', '子评论数', '点赞量']
+      },
+
+      xAxis: [
+        {
+          type: 'category',
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.2)'
+            }
+          },
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.1)'
+            }
+          },
+          axisLabel: {
+            color: "rgba(255,255,255,.7)"
+          },
+
+          data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+          axisPointer: {
+            type: 'shadow'
+          }
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          name: '',
+          min: 0,
+          interval: 200,
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.3)'
+            }
+          },
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.01)'
+            }
+          },
+
+          axisLabel: {
+            formatter: '{value}'
+          }
+        }
+
+      ],
+      series: [
+        {
+          name: '评论数',
+          type: 'bar',
+          itemStyle: {
+            normal: {
+              // color: '#00a0e9'
+              color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [
+                  { offset: 0, color: '#b266ff' },
+                  { offset: 1, color: '#121b87' }
+                ]
+              )
+            }
+          },
+          // month_data1
+data: [157, 89, 87, 612, 471, 219, 128, 175, 57, 31, 7, 5]
+        },
+        {
+          name: '子评论数',
+          type: 'bar',
+          itemStyle: {
+            normal: {
+              // color: '#fff799'
+              color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [
+                  { offset: 0, color: '#00f0ff' },
+                  { offset: 1, color: '#032a72' }
+                ]
+              )
+            }
+          },
+          // month_data2
+data: [173, 56, 10, 264, 588, 167, 40, 118, 15, 14, 1, 0]
+        },
+        {
+          name: '点赞量',
+          type: 'bar',
+          itemStyle: {
+            normal: {
+              // color: '#6fcc8c'
+              color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [
+                  { offset: 0, color: '#fffb34' },
+                  { offset: 1, color: '#032a72' }
+                ]
+              )
+            }
+          },
+          // month_data3
+data: [328.94376419078077, 50.99019513592785, 67.49814812274482, 127.87493890516625, 228.22795621921517, 66.42288762166245, 64.8074069840786, 18.973665961010276, 14.0]
+        }
+      ]
+    };
+    myChart.setOption(option);
+    window.addEventListener("resize", function() {
+      myChart.resize();
+    })
+  </script>
+
+  <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('lpeftbot'));
+    option = {
+      color: ['#00b7ee', '#f8e19a', '#f19ec2', '#5ebbeb', '#d16ad8', '#f8e19a', '#00b7ee', '#81dabe', '#5fc5ce'],
+      backgroundColor: 'rgba(1,202,217,.2)',
+      grid: {
+        left: 20,
+        right: 20,
+        top: 0,
+        bottom: 20
+      },
+      legend: {
+        top: 10,
+        textStyle: {
+          fontSize: 10,
+          color: 'rgba(255,255,255,.7)'
+        },
+        data: ['城镇居民', '农村居民', '入境游客']
+      },
+      series: [
+        {
+          name: '访问来源',
+          type: 'pie',
+          radius: '55%',
+          center: ['50%', '58%'],
+          data: [
+            { value: 3760, name: '城镇居民' },
+            { value: 1130, name: '农村居民' },
+            { value: 82, name: '入境游客' }
+
+          ],
+          itemStyle: {
+            emphasis: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+          }
+        }
+      ]
+    };
+    myChart.setOption(option);
+    window.addEventListener("resize", function() {
+      myChart.resize();
+    })
+  </script>
+  <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('pleftbox2top'));
+    option = {
+      color: ['#d2d17c', '#00b7ee', '#5578cf', '#5ebbeb', '#d16ad8', '#f8e19a', '#00b7ee', '#81dabe', '#5fc5ce'],
+      backgroundColor: 'rgba(1,202,217,.2)',
+      grid: {
+        left: 20,
+        right: 20,
+        top: 0,
+        bottom: 20
+      },
+      legend: {
+        top: 10,
+        textStyle: {
+          fontSize: 10,
+          color: 'rgba(255,255,255,.7)'
+        },
+        // ip_data1
+data: ['吉林', '黑龙江', '辽宁', '广东', '山西', 'IP未知', '北京', '山东']
+      },
+      series: [
+        {
+          name: '访问来源',
+          type: 'pie',
+          radius: '55%',
+          center: ['50%', '55%'],
+
+          data: [
+            // ip_data2
+{ value : 1475, name : '吉林' },
+{ value : 126, name : '黑龙江' },
+{ value : 78, name : '辽宁' },
+{ value : 34, name : '广东' },
+{ value : 29, name : '山西' },
+{ value : 27, name : 'IP未知' },
+{ value : 23, name : '北京' },
+{ value : 20, name : '山东' }
+          ],
+          itemStyle: {
+            emphasis: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+          }
+        }
+      ]
+    };
+    myChart.setOption(option);
+    window.addEventListener("resize", function() {
+      myChart.resize();
+    })
+  </script>
+  <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('pleftbox2midd'));
+    option = {
+      color: ['#f8e19a', '#00b7ee', '#5578cf', '#5ebbeb', '#d16ad8', '#f8e19a', '#00b7ee', '#81dabe', '#5fc5ce'],
+      backgroundColor: 'rgba(1,202,217,.2)',
+      grid: {
+        left: 20,
+        right: 20,
+        top: 0,
+        bottom: 20
+      },
+      legend: {
+        top: 10,
+        textStyle: {
+          fontSize: 10,
+          color: 'rgba(255,255,255,.7)'
+        },
+        // keyword_data
+data: ['长影', '世纪', '长春', '电影', '项目', '打卡', '体验', '孩子']
+      },
+      series: [
+        {
+          name: '访问来源',
+          type: 'pie',
+          radius: '55%',
+          center: ['50%', '65%'],
+          data: [
+            // keyword_data2
+{ value : 439, name : '长影' },
+{ value : 365, name : '世纪' },
+{ value : 248, name : '长春' },
+{ value : 138, name : '电影' },
+{ value : 133, name : '项目' },
+{ value : 103, name : '打卡' },
+{ value : 102, name : '体验' },
+{ value : 74, name : '孩子' }
+          ],
+          itemStyle: {
+            emphasis: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)',
+              borderRadius: 4 // 设置圆角大小
+            }
+          }
+        }
+      ]
+    };
+    myChart.setOption(option);
+    window.addEventListener("resize", function() {
+      myChart.resize();
+    })
+  </script>
+  <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('pmrboxbottom'));
+    option = {
+      color: ['#d2d17c', '#00b7ee', '#5578cf', '#5ebbeb', '#d16ad8', '#f8e19a', '#00b7ee', '#81dabe', '#5fc5ce'],
+      backgroundColor: 'rgba(1,202,217,.2)',
+      legend: {
+        top: 10,
+        textStyle: {
+          fontSize: 10,
+          color: 'rgba(255,255,255,.7)'
+        },
+        data: ['非常好评', '好评', '中评', '差评', '非常差评']
+      },
+      grid: {
+        left: 10,
+        right: 10,
+        top: 40,
+        bottom: 10,
+        containLabel: true
+      },
+
+      xAxis: [
+        {
+          type: 'category',
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.3)'
+            }
+          },
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.01)'
+            }
+          },
+          // analysis_time
+          data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+        }
+      ],
+      yAxis: [
+        {
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.3)'
+            }
+          },
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.01)'
+            }
+          },
+
+          axisLabel: {
+            formatter: '{value}个'
+          },
+          type: 'value'
+        }
+
+      ],
+      series: [
+
+        {
+          name: '非常好评',
+          type: 'bar',
+          barWidth: 30,
+          stack: '搜索引擎',
+          data: [220, 132, 101, 234, 250, 130, 120, 220, 132, 301, 134, 190]
+        },
+        {
+          name: '好评',
+          type: 'bar',
+          stack: '搜索引擎',
+          data: [120, 222, 101, 134, 290, 230, 100, 101, 134, 320, 230, 220]
+        },
+        {
+          name: '中评',
+          type: 'bar',
+          stack: '搜索引擎',
+          data: [160, 122, 171, 134, 190, 130, 110, 71, 74, 190, 130, 110]
+        },
+        ,
+        {
+          name: '差评',
+          type: 'bar',
+          stack: '搜索引擎',
+          data: [120, 132, 101, 134, 220, 170, 120, 101, 134, 250, 130, 120]
+        },
+        {
+          name: '非常差评',
+          type: 'bar',
+          stack: '搜索引擎',
+          data: [60, 72, 71, 74, 90, 30, 110, 71, 74, 50, 30, 10]
+        }
+      ]
+    };
+    myChart.setOption(option);
+    window.addEventListener("resize", function() {
+      myChart.resize();
+    })
+  </script>
+  <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('pleftbox2bott_cont'));
+    option = {
+      color: ['#7ecef4'],
+      backgroundColor: 'rgba(1,202,217,.2)',
+      grid: {
+        left: 40,
+        right: 20,
+        top: 20,
+        bottom: 0,
+        containLabel: true
+      },
+
+      xAxis: {
+        type: 'value',
+        axisLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,0)'
+          }
+        },
+        splitLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,0)'
+          }
+        },
+        axisLabel: {
+          color: "rgba(255,255,255,0)"
+        },
+        boundaryGap: [0, 0.01]
+      },
+      yAxis: {
+        type: 'category',
+        axisLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.5)'
+          }
+        },
+        splitLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.1)'
+          }
+        },
+        axisLabel: {
+          color: "rgba(255,255,255,.5)"
+        },
+        data: ['微博', 'BiliBili', '快手', '小红书', '抖音']
+      },
+      series: [
+        {
+          name: '2011年',
+          type: 'bar',
+          barWidth: 20,
+          itemStyle: {
+            normal: {
+              color: new echarts.graphic.LinearGradient(
+                1, 0, 0, 1,
+                [
+                  { offset: 0, color: 'rgba(230,253,139,.7)' },
+                  { offset: 1, color: 'rgba(41,220,205,.7)' }
+                ]
+              )
+            }
+          },
+          data: [38203, 43489, 69034, 104970, 151744]
+        }
+      ]
+    };
+    myChart.setOption(option);
+    window.addEventListener("resize", function() {
+      myChart.resize();
+    })
+  </script>
+  <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('prbottom_box1'));
+    option = {
+      color: ['#d2d17c', '#7fd7b1', '#5578cf', '#5ebbeb', '#d16ad8', '#f8e19a', '#00b7ee', '#81dabe', '#5fc5ce'],
+      backgroundColor: 'rgba(1,202,217,.2)',
+      grid: {
+        left: 20,
+        right: 30,
+        top: 0,
+        bottom: 20
+      },
+      legend: {
+        top: 5,
+
+        textStyle: {
+          fontSize: 10,
+          color: 'rgba(255,255,255,.6)'
+        },
+        data: ['农村居民', '城镇居民', '国际游客']
+      },
+      grid: {
+        left: 20,
+        right: 30,
+        top: 40,
+        bottom: 10,
+        containLabel: true
+      },
+      toolbox: {
+        feature: {
+          saveAsImage: {}
+        }
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        axisLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.2)'
+          }
+        },
+        splitLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.1)'
+          }
+        },
+        axisLabel: {
+          color: "rgba(255,255,255,.7)"
+        },
+        data: ['2016年', '2017年', '2018年', '2019年', '2020年', '2021年', '2022年', '2023年']
+      },
+      yAxis: {
+        type: 'value',
+        axisLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.2)'
+          }
+        },
+        splitLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.1)'
+          }
+        },
+        axisLabel: {
+          color: "rgba(255,255,255,.7)"
+        },
+      },
+      series: [
+        {
+          name: '农村居民',
+          type: 'line',
+          stack: 'a',
+          areaStyle: { normal: {} },
+          data: [7147.9, 7987.7, 8688.3, 9741.9, 4319.8, 5546.6, 3562.7, 7353.0]
+        },
+        {
+          name: '城镇居民',
+          type: 'line',
+          stack: 'a',
+          areaStyle: { normal: {} },
+          data: [32241.9, 37673.0, 42590.0, 47509.0, 17966.5, 23644.2, 16881.3, 41781.0]
+        },
+        {
+          name: '国际游客',
+          type: 'line',
+          stack: 'a',
+          areaStyle: { normal: {} },
+          data: [8640.0, 8886.024, 9151.416720000001, 9450.288, 0.0, 0.0, 0.0, 3816.0]
+        }
+      ]
+    };
+    myChart.setOption(option);
+    window.addEventListener("resize", function() {
+      myChart.resize();
+    })
+  </script>
+  <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('prbottom_box2'));
+    option = {
+      backgroundColor: 'rgba(1,202,217,.2)',
+      color: ['#7ecef4', '#7fd7b1'],
+      grid: {
+        left: 30,
+        right: 20,
+        top: 20,
+        bottom: 40
+      },
+      xAxis: {
+        axisLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.7)'
+          }
+        },
+        splitLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.1)'
+          }
+        },
+        data: ['住宿', '餐饮', '景区', '交通', '市政', '购物']
+      },
+      yAxis: {
+        axisLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.2)'
+          }
+        },
+        splitLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.1)'
+          }
+        }
+      },
+      series: [{
+        symbolSize: 20,
+        data: [
+          [0.0, 8.04],
+          [2.0, 6.95],
+          [3.0, 7.58],
+          [5.0, 8.81],
+          [0.4, 8.33],
+          [4.0, 1.96],
+          [0.3, 7.24],
+          [4.6, 4.26],
+          [2.0, 4.84],
+          [2.0, 4.82],
+          [5.0, 5.68],
+          [1.0, 7.43],
+          [1.0, 5.78]
+        ],
+        type: 'scatter'
+      }]
+    };
+    myChart.setOption(option);
+    window.addEventListener("resize", function() {
+      myChart.resize();
+    })
+  </script>
+</body>
+
+</html>

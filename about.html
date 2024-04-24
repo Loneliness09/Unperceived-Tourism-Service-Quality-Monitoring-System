@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>旅游市场服务质量监控系统</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <style>
+    .about-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+    }
+
+    /* 标题样式 */
+    .about-container h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    /* 段落样式 */
+    .about-container p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    /* 列表样式 */
+    .about-container ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .about-container li {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 5px;
+    }
+
+    /* 联系方式样式 */
+    .about-container p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 导航栏高亮 */
+    .bnt .topbnt_left ul li.active a {
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    /* 其他通用样式 */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #007bff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bnt">
+    <div class="topbnt_left fl">
+      <ul>
+        <li><a href="./home.html">首页</a></li>
+        <li><a title="暂未开发">问题聚焦</a></li>
+        <li><a href="./index.html">舆情分析</a></li>
+        <li><a href="./link.html">旅游市场</a></li>
+      </ul>
+    </div>
+    <h1 class="tith1 fl">旅游市场服务质量评价</h1>
+    <div class="fr topbnt_right">
+      <ul>
+        <li><a title="时间"><span id="clock"></span></a></li>
+        <li class="active"><a href="./about.html">关于</a></li>
+        <li><a href="./service.html">服务</a></li>
+        <li><a href="./cloud.html">词云</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="left1 pleft1" style="width: 100%;">
+    <div class="plefttoday" style="height: 96.5%; background-image: url(./img/pulefttop.png);">
+      <div style="width: 50%;">
+        <h1 style="padding-top: 3.5%; color: cyan;">关于</h1>
+      </div>
+      <div class="left2_table hdleft2_table"
+        style="margin-top: 2%; height: 86%;margin-left: 2.5%; width: 95%; font-size: 18px;">
+        <div class="about-container">
+          <p>这是一个旨在提升旅游行业服务质量的综合性数据应用平台。我们通过整合多源数据,包括政府统计数据和用户反馈,对旅游市场进行全面的分析和监控。</p>
+          <p>系统主要包括以下功能模块:</p>
+          <ul>
+            <li>数据分析和可视化:提供丰富的数据分析图表和洞见,助力旅游企业和政府部门的决策</li>
+            <li class="bg">问题聚焦:聚焦分析旅游市场中的热点问题,为解决方案提供依据</li>
+            <li>舆情分析:实时监测和分析社交媒体上与旅游相关的话题和评论</li>
+            <li class="bg">服务评价:建立旅游服务质量评价体系,为消费者提供选择依据</li>
+          </ul>
+          <p>我们的目标是通过数据驱动,持续优化旅游服务质量,为广大游客提供更美好的旅游体验。</p>
+          
+          <h2>联系我们</h2>
+          <p>如果您有任何意见或建议,欢迎随时与我们联系。</p>
+          <p>邮箱: 2583346094@qq.com</p>
+          <p>电话: +86 18186889586</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script>
+    function displayTime() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+
+      hours = (hours < 10 ? "0" : "") + hours;
+      minutes = (minutes < 10 ? "0" : "") + minutes;
+      seconds = (seconds < 10 ? "0" : "") + seconds;
+
+      var timeString = hours + ":" + minutes + ":" + seconds;
+
+      document.getElementById("clock").innerHTML = timeString;
+    }
+
+    setInterval(displayTime, 500);
+  </script>
+</body>
+
+</html>
