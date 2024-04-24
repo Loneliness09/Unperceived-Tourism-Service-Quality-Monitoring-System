@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>旅游市场服务质量监控系统</title>
   <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <script src="js/echarts.min.js"></script>
   <style>
     a {
       text-decoration: none;
@@ -18,18 +19,20 @@
     /* 头部样式 */
     .header {
       background-color: rgba(150, 180, 200, 0.3);
+      height: 28%;
       border-radius: 10px;
       color: #fff;
       padding: 20px 20px;
       margin: 20px 20px;
-      background-image: url(./img/home/Designer6-1.png);
-      background-size: cover;
+      /* background-image: url(./img/home/Designer6-1.png); */
+      /* background-size: cover; */
       text-shadow: 0 0 4px rgba(21, 48, 116, 0.7);
     }
 
     .header-content {
       max-width: 100%;
-      margin: 10px 20px;
+      height: 90%;
+      margin: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -79,12 +82,12 @@
       margin: 40px auto;
       display: flex;
       justify-content: space-between;
-      gap: 40px;
+      gap: 60px;
     }
 
     .section {
-      width: 33%;
-      height: 70%;
+      width: 30%;
+      height: 80%;
       text-align: center;
       padding: 30px;
       border-radius: 8px;
@@ -95,6 +98,7 @@
 
     .s1 {
       background-image: url(./img/home/t1.png);
+      background-position: 0px -20px;
     }
 
     .s2 {
@@ -109,13 +113,14 @@
 
     .section h2 {
       font-size: 20px;
-      margin-bottom: 28px;
+      margin-bottom: 40px;
     }
 
     .section p {
       font-size: 16px;
-      color: #ddd;
-      margin-bottom: 32px;
+      padding: 0 20px;
+      color: #eee;
+      margin-bottom: 44px;
       font-style: italic;
     }
 
@@ -177,12 +182,7 @@
         style="margin-top: 2%; height: 86%;margin-left: 2.5%; width: 95%; font-size: 18px;"
         id="word-cloud">
         <div class="header">
-          <div class="header-content">
-&ThickSpace;&ThickSpace;&ThickSpace;&ThickSpace;2024年春节，以冰雪旅游为主要的特色旅游风头正盛。据文化和旅游部数据中心测算，春节假期国内旅游出游4.74亿人次，同比增长34.3%，按可比口径较2019年同期增长19.0%。
-与“尔滨”的爆火共同出现的，还有网络上纷至沓来的“吐槽”与反馈。相关话题屡屡冲上社交平台热榜。游客的旅行不甚愉快，某些欺诈消费者、虚假宣传的违法经营者却大肆敛财。
-虽然针对这些违法行为，我们有类似12315热线等投诉举报方式，但这种方式具有滞后性，往往消费者已经遭遇钱财损失，与商家交涉失败才会拨打。
-那么有没有一款产品能够为市场管理机关提供参考，检测问题，根据评价结果制定相应的规划、政策和措施，促进旅游业的健康有序发展。
-在这样的背景下，我们团队希望能够使用技术手段从评论数据中挖掘有价值的信息，将问题提取并通过可视化的手段反映出来，为消费者选择目的地提供参考，为决策者改进服务提供支持
+          <div class="header-content" id="topbar">
           </div>
         </div>
         <div class="main">
@@ -226,6 +226,131 @@
     }
 
     setInterval(displayTime, 500);
+  </script>
+  <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('topbar'));
+    option = {
+      backgroundColor: 'rgba(1,202,217,.2)',
+      grid: {
+        left: 50,
+        right: 20,
+        top: 45,
+        bottom: 30
+      },
+      legend: {
+        top: 10,
+        textStyle: {
+          fontSize: 10,
+          color: 'rgba(255,255,255,.7)'
+        },
+        data: ['城镇居民', '农村居民', '总花费']
+      },
+
+      xAxis: [
+        {
+          type: 'category',
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.2)'
+            }
+          },
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.1)'
+            }
+          },
+          axisLabel: {
+            color: "rgba(255,255,255,.7)"
+          },
+
+          data: ['2014年', '2015年', '2016年', '2017年', '2018年', '2019年', '2020年', '2021年', '2022年', '2023年'],
+          axisPointer: {
+            type: 'shadow'
+          }
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          name: '',
+          min: 0,
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.3)'
+            }
+          },
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.01)'
+            }
+          },
+
+          axisLabel: {
+            formatter: '{value}'
+          }
+        }
+
+      ],
+      series: [
+        {
+          name: '城镇居民',
+          type: 'bar',
+          itemStyle: {
+            normal: {
+              // color: '#00a0e9'
+              color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [
+                  { offset: 0, color: '#b266ff' },
+                  { offset: 1, color: '#121b87' }
+                ]
+              )
+            }
+          },
+          // month_data1
+data: [24219.8, 27610.9, 32241.9, 37673.0, 42590.0, 47509.0, 17966.5, 23644.2, 16881.3, 41781.0]
+        },
+        {
+          name: '农村居民',
+          type: 'bar',
+          itemStyle: {
+            normal: {
+              // color: '#fff799'
+              color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [
+                  { offset: 0, color: '#00f0ff' },
+                  { offset: 1, color: '#032a72' }
+                ]
+              )
+            }
+          },
+data: [6092.1, 6584.2, 7147.9, 7987.7, 8688.3, 9741.9, 4319.8, 5546.6, 3562.7, 7353.0]
+        },
+        {
+          name: '总花费',
+          type: 'bar',
+          itemStyle: {
+            normal: {
+              // color: '#6fcc8c'
+              color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [
+                  { offset: 0, color: '#fffb34' },
+                  { offset: 1, color: '#032a72' }
+                ]
+              )
+            }
+          },
+          // month_data3
+data: [30311.9, 34195.1, 39389.8, 45660.8, 51278.3, 57250.9, 22286.3, 29190.7, 20444.0, 49133.0]
+        }
+      ]
+    };
+    myChart.setOption(option);
+    window.addEventListener("resize", function() {
+      myChart.resize();
+    })
   </script>
 </body>
 

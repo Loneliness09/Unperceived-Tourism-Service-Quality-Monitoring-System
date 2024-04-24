@@ -51,7 +51,7 @@
 *示例:*
 
 
-<img src='./img/example/屏幕截图%202024-04-11.png' style='width: 100%;'>
+<img src='./img/example/屏幕截图 2024-04-24 191000.png' style='width: 100%;'>
 
 邮箱: 2583346094@qq.com
 
