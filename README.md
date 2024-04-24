@@ -1,4 +1,4 @@
-# <a style='color: #ffa;'> 无感知旅游服务质量监控调节系统 </a>
+# <a style='color: #ffa;'> 无感知旅游服务质量监控系统 </a>
 ---
 ## <a class='sec_tit' id='dir'> 目录 </a>
 
