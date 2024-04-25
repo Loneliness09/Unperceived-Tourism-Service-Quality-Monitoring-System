@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 
 # 自定义库
-from src import sol_keyword, location, info
+from src import sol_keyword, location, info, anylsis
 
 info.sys_info('读取index_o.html')
 info.gap()
@@ -203,6 +203,11 @@ html[kw + 1] = f"data: [{d + f'{d}, {d}'.join(kw_ls.keys()) + d}]\n"
 html[kw2 + 1] = ',\n'.join(["{" + f" value : {num}, name : {d + word + d} " + "}" for word, num in kw_ls.items()]) + '\n'
 
 info.sys_info('感情极性分析')
+info.gap()
+results = anylsis.senta(key, 1000)
+
+with open('anylsis_o.html', 'r', encoding='utf-8'):
+    pass
 
 info.sys_info('写入到index.html')
 info.gap()
