@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 
 # 自定义库
-from src import sol_keyword, location, info
+from src import sol_keyword, location, info, tem
 
 info.sys_info('读取index_o.html')
 info.gap()
@@ -234,7 +234,6 @@ for name, url in zip(link['name'], link['url']):
 with open('link_o.html', 'r', encoding='utf-8') as f:
     lk_data = f.readlines()
 
-info.sys_info('更新完成')
 
 kk = 0
 for i, line in enumerate(lk_data):
@@ -245,6 +244,8 @@ lk_data[kk + 1] = '\n'.join(lst)
 
 with open('link.html', 'w', encoding='utf-8') as f:
     f.writelines(lk_data)
+
+info.sys_info('更新完成')
 
 # 热力图点数据
 with open('js/baidu_o.js', 'r', encoding='utf-8') as f:
@@ -295,3 +296,4 @@ info.gap()
 
 with open('./js/cloud.js', 'w', encoding='utf-8') as f:
     f.writelines(cl_data)
+
