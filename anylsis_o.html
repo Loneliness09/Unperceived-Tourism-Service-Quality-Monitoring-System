@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>旅途智见平台</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <style>
+    button {
+            background-color: #007bff;
+            margin: 0% 5%;
+            margin-top: 2%;
+            color: white;
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+  </style>
+</head>
+
+<body onload="loadPage(1)">
+  <div class="bnt">
+    <div class="topbnt_left fl">
+      <ul>
+        <li><a href="./home.html">首页</a></li>
+        <li class="active"><a href="./anylsis.html">情感分析</a></li>
+        <li><a href="./index.html">舆情分析</a></li>
+        <li><a href="./link.html">旅游市场</a></li>
+      </ul>
+    </div>
+    <h1 class="tith1 fl">旅途智见</h1>
+    <div class="fr topbnt_right">
+      <ul>
+        <li><a title="时间"><span id="clock"></span></a></li>
+        <li><a href="./about.html">关于</a></li>
+        <li><a href="./service.html">服务</a></li>
+        <li><a href="./cloud.html">词云</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="left1 pleft1" style="width: 100%;">
+    <div class="plefttoday" style="height: 96.5%; background-image: url(./img/pulefttop.png);">
+      <div style="width: 50%;">
+        <h1 style="padding-top: 3.5%; color: cyan;">评论情感分析</h1>
+      </div>
+      <div>
+        <button onclick="loadPage(1)">特别好评</button>
+          <button onclick="loadPage(2)">好评</button>
+          <button onclick="loadPage(3)">中评</button>
+          <button onclick="loadPage(4)">差评</button>
+          <button onclick="loadPage(5)">特别差评</button>
+      </div>
+      <div class="left2_table hdleft2_table"
+        style="margin-top: 1.5%; height: 75%;margin-left: 2.5%; width: 95%; font-size: 18px; border-radius: 8px;" id="content">
+      </div>
+    </div>
+  </div>
+  <script>
+    function displayTime() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+
+      hours = (hours < 10 ? "0" : "") + hours;
+      minutes = (minutes < 10 ? "0" : "") + minutes;
+      seconds = (seconds < 10 ? "0" : "") + seconds;
+
+      var timeString = hours + ":" + minutes + ":" + seconds;
+
+      document.getElementById("clock").innerHTML = timeString;
+    }
+
+    setInterval(displayTime, 500);
+  </script>
+  <script>
+const commentData = {
+  
+    1: [
+      // vg
+        { author: "Author 1", comment: "Comment 1 for Page 1", ip: "192.168.1.100", time: "2023-04-25 10:30:00", score: 66},{ author: "Author 2", comment: "Comment 2 for Page 1", ip: "192.168.1.100", time: "2023-04-25 10:30:00", score: 66 }
+    ],
+    2: [
+      // g
+        { author: "Author 1", comment: "Comment 1 for Page 2", ip: "192.168.1.100", time: "2023-04-25 10:30:00", score: 66 },{ author: "Author 2", comment: "Comment 2 for Page 2", ip: "192.168.1.100", time: "2023-04-25 10:30:00", score: 66 },{ author: "Author 3", comment: "Comment 3 for Page 2", ip: "192.168.1.100", time: "2023-04-25 10:30:00", score: 66 }
+    ],
+    3: [
+      // mid
+        { author: "Author 1", comment: "Comment 1 for Page 3", ip: "192.168.1.100", time: "2023-04-25 10:30:00", score: 66 }
+    ],
+    4: [
+      // n
+        { author: "Author 1", comment: "Comment 1 for Page 4", ip: "192.168.1.100", time: "2023-04-25 10:30:00", score: 66 },{ author: "Author 2", comment: "Comment 2 for Page 4", ip: "192.168.1.100", time: "2023-04-25 10:30:00", score: 66 },{ author: "Author 3", comment: "Comment 3 for Page 4", ip: "192.168.1.100", time: "2023-04-25 10:30:00", score: 66 },{ author: "Author 4", comment: "Comment 4 for Page 4", ip: "192.168.1.100", time: "2023-04-25 10:30:00", score: 66 }
+    ],
+    5: [
+      // vn
+        { author: "Author 1", comment: "Comment 1 for Page 5", ip: "192.168.1.100", time: "2023-04-25 10:30:00", score: 66 },{ author: "Author 2", comment: "Comment 2 for Page 5", ip: "192.168.1.100", time: "2023-04-25 10:30:00", score: 66 }
+    ]
+};
+function loadPage(pageNumber) {
+    const contentDiv = document.getElementById('content');
+
+    // 清空之前的内容
+    contentDiv.innerHTML = '';
+
+    const commentCount = commentData[pageNumber].length;
+
+    // 根据页面号码显示对应的内容
+    const pageContent = `
+        <ul>
+            <li class='bg'><h2>${commentCount} 条评论</h2></li>
+            ${commentData[pageNumber].map(({ author, comment , ip, time, score}, index) => `
+            
+                <li class="${index % 2 === 0 ? '' : 'bg'}">
+                  <p class="fl"><b>${author}</b><br>
+                    <b>${ip}</b><br>
+                    <b>情感打分: ${score}</b><br>
+                    <p class="fr pt17" style="margin: 20px 0;">${time}</p>
+                    <i><a class='aaa'>${comment}</a></i>
+                    </p>
+                </li>
+            `).join('')}
+        </ul>
+    `;
+    contentDiv.innerHTML = pageContent;
+}
+  </script>
+</body>
+
+</html>

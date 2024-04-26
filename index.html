@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>旅游市场服务质量监控系统</title>
+  <title>旅途智见平台</title>
   <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
   <script src="js/echarts.min.js" charset="utf-8"></script>
   <script type="text/javascript"
@@ -18,12 +18,12 @@
     <div class="topbnt_left fl">
       <ul>
         <li><a href="./home.html">首页</a></li>
-        <li><a title="暂未开发">问题聚焦</a></li>
+        <li><a href="./anylsis.html">情感分析</a></li>
         <li class="active"><a href="./index.html">舆情分析</a></li>
         <li><a href="./link.html">旅游市场</a></li>
       </ul>
     </div>
-    <h1 class="tith1 fl">旅游市场服务质量监控</h1>
+    <h1 class="tith1 fl">旅途智见</h1>
     <div class="fr topbnt_right">
       <ul>
         <li><a title="时间"><span id="clock"></span></a></li>
@@ -431,6 +431,7 @@
           type: 'value',
           name: '',
           min: 0,
+          max: 5000,
           axisLine: {
             lineStyle: {
               color: 'rgba(255,255,255,.3)'
@@ -674,7 +675,7 @@ data: ['长春', '流泪', '比心', '捂脸', '净月潭', '东北', '吉林', 
           fontSize: 10,
           color: 'rgba(255,255,255,.7)'
         },
-        data: ['非常好评', '好评', '中评', '差评', '非常差评']
+        data: ['特别好评', '好评', '中评', '差评', '特别差评']
       },
       grid: {
         left: 10,
@@ -698,7 +699,7 @@ data: ['长春', '流泪', '比心', '捂脸', '净月潭', '东北', '吉林', 
             }
           },
           // analysis_time
-          data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+          data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
         }
       ],
       yAxis: [
@@ -724,37 +725,37 @@ data: ['长春', '流泪', '比心', '捂脸', '净月潭', '东北', '吉林', 
       series: [
 
         {
-          name: '非常好评',
+          name: '特别好评',
           type: 'bar',
           barWidth: 30,
           stack: '搜索引擎',
-          data: [220, 132, 101, 234, 250, 130, 120, 220, 132, 301, 134, 190]
-        },
+          // v1
+data :[622, 293, 99, 66, 24, 25, 14, 30, 164, 74, 13, 51]        },
         {
           name: '好评',
           type: 'bar',
           stack: '搜索引擎',
-          data: [120, 222, 101, 134, 290, 230, 100, 101, 134, 320, 230, 220]
-        },
+          // v2
+data :[149, 92, 41, 58, 10, 14, 10, 19, 150, 50, 5, 20]        },
         {
           name: '中评',
           type: 'bar',
           stack: '搜索引擎',
-          data: [160, 122, 171, 134, 190, 130, 110, 71, 74, 190, 130, 110]
-        },
+          // v3
+data :[127, 100, 77, 57, 8, 26, 6, 21, 163, 38, 6, 22]        },
         ,
         {
           name: '差评',
           type: 'bar',
           stack: '搜索引擎',
-          data: [120, 132, 101, 134, 220, 170, 120, 101, 134, 250, 130, 120]
-        },
+          // v4
+data :[71, 126, 36, 58, 2, 21, 4, 23, 208, 31, 3, 16]        },
         {
-          name: '非常差评',
+          name: '特别差评',
           type: 'bar',
           stack: '搜索引擎',
-          data: [60, 72, 71, 74, 90, 30, 110, 71, 74, 50, 30, 10]
-        }
+          // v5
+data :[31, 106, 17, 44, 6, 15, 5, 21, 151, 17, 1, 16]        }
       ]
     };
     myChart.setOption(option);

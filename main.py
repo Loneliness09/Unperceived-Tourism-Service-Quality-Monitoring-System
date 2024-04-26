@@ -47,6 +47,7 @@ ip1, ip2 = 0, 0
 md1, md3, md3 = 0, 0, 0
 kw, kw2 = 0, 0
 at = 0
+v1, v2, v3, v4, v5 = [0] * 5
 for i, line in enumerate(html):
     if line.strip() == '<!-- keyword -->':
         ky = i
@@ -78,6 +79,17 @@ for i, line in enumerate(html):
         cm3 = i
     if line.strip() == '<!-- comment4 -->':
         cm4 = i
+    if line.strip() == '// v1':
+        v1 = i
+    if line.strip() == '// v2':
+        v2 = i
+    if line.strip() == '// v3':
+        v3 = i
+    if line.strip() == '// v4':
+        v4 = i
+    if line.strip() == '// v5':
+        v5 = i
+
 # print(tm, st, ed)
 
 html[ky + 1] = f'               <p class="fl">关键字：{key}</p>\n'
@@ -202,12 +214,63 @@ info.sys_info('关键字词频\n', kw_ls)
 html[kw + 1] = f"data: [{d + f'{d}, {d}'.join(kw_ls.keys()) + d}]\n"
 html[kw2 + 1] = ',\n'.join(["{" + f" value : {num}, name : {d + word + d} " + "}" for word, num in kw_ls.items()]) + '\n'
 
+
+
 info.sys_info('感情极性分析')
 info.gap()
 results = anylsis.senta(key, 1000)
 
-with open('anylsis_o.html', 'r', encoding='utf-8'):
-    pass
+with open('anylsis_o.html', 'r', encoding='utf-8') as f:
+    anylsis_data = f.readlines()
+
+pos1, pos2, pos3, pos4, pos5 = 0, 0, 0, 0, 0
+for i, line in enumerate(anylsis_data):
+    if line.strip() == '// vg':
+        pos1 = i
+    if line.strip() == '// g':
+        pos2 = i
+    if line.strip() == '// mid':
+        pos3 = i
+    if line.strip() == '// n':
+        pos4 = i
+    if line.strip() == '// vn':
+        pos5 = i
+
+rsls = {}
+sum_ls = []
+for label in ['特别好评', '好评', '中评', '差评', '特别差评']:
+    rsls[label] = []
+    sum_ls.append([len(results[x][label]) for x in results])
+# print(sum_ls)
+
+html[v1 + 1] = 'data :' + str(sum_ls[0])
+html[v2 + 1] = 'data :' + str(sum_ls[1])
+html[v3 + 1] = 'data :' + str(sum_ls[2])
+html[v4 + 1] = 'data :' + str(sum_ls[3])
+html[v5 + 1] = 'data :' + str(sum_ls[4])
+
+for month in results:
+    for key in results[month]:
+        for sentence in results[month][key]:
+            k = '{' + f' author: "{sentence[0]}", comment: "{sentence[1]}", ip: "在 {sentence[2]}", time: "{sentence[4]}", score: "{sentence[3] * 100}"' + '}'
+            rsls[key].append(k)
+
+
+anylsis_data[pos1 + 1] = ',\n'.join(rsls['特别好评'])
+anylsis_data[pos2 + 1] = ',\n'.join(rsls['好评'])
+anylsis_data[pos3 + 1] = ',\n'.join(rsls['中评'])
+anylsis_data[pos4 + 1] = ',\n'.join(rsls['差评'])
+anylsis_data[pos5 + 1] = ',\n'.join(rsls['特别差评'])
+
+info.sys_info('写入到anylsis.html')
+info.gap()
+
+with open('anylsis.html', 'w', encoding='utf-8') as f:
+    f.writelines(anylsis_data)
+
+info.sys_info('写入完成')
+info.gap()
+
 
 info.sys_info('写入到index.html')
 info.gap()
@@ -219,6 +282,7 @@ with open('index.html', 'w', encoding='utf-8') as f:
     f.writelines(html[ed:])
 
 info.sys_info('写入完成')
+
 
 info.sys_info('更新链接')
 info.gap()
@@ -300,3 +364,6 @@ info.gap()
 
 with open('./js/cloud.js', 'w', encoding='utf-8') as f:
     f.writelines(cl_data)
+
+info.sys_info('写入完成')
+info.gap()
