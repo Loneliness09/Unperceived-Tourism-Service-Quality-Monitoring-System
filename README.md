@@ -51,7 +51,15 @@
 *示例:*
 
 
-<img src='./img/example/屏幕截图 2024-04-24 191000.png' style='width: 100%;'>
+<img src='./img/example/demo.png' style='width: 100%;'>
+
+---
+
+<img src='./img/example/demo2.png' style='width: 100%;'>
+
+---
+
+<img src='./img/example/demo3.png' style='width: 100%;'>
 
 邮箱: 2583346094@qq.com
 
@@ -69,12 +77,12 @@
 
 - *使用.venv环境*
     - 0. 创建venv环境 <code>> python -m venv .venv</code>
-    - 1. cmd/PS 进入根目录下的 <code>./.venv/Scripts/</code>
+    - 1. cmd/PS 进入根目录下的 <code>cd ./.venv/Scripts/</code>
     - 2. 激活环境 <code>(cmd)> activate (PS)> ./activate</code>
     - 3. 安装依赖 <code>> pip install -r requirements.txt</code>
     - 4. 返回根目录 <code>cd ../..</code>
     - 5. 运行主程序 <code>> python main.py</code>
-    - 6. 输入参数 <code>> 伪满皇宫/长影世纪城</code>
+    - 6. 输入参数 <code>> 净月潭 </code>
     - 7. 打开 index.html 文件
 
 </div>
@@ -87,7 +95,7 @@
     - 1. cmd/PS 进入根目录 <code>./</code>
     - 2. 安装依赖 <code>> python -m pip install -r requirements.txt </code>
     - 3. 运行主程序 <code>> python main.py </code>
-    - 4. 输入参数 <code>> 伪满皇宫/长影世纪城</code>
+    - 4. 输入参数 <code>> 净月潭 </code>
     - 5. 打开 index.html 文件
 
 </div>
@@ -109,30 +117,31 @@
     - style.css
 - data
     - history
-        - 历史数据
+        - 历史评论数据
     - web_ls
         - link.txt
     - 旅游业发展情况.csv
     - 年度数据.csv
     - search_comments.csv
     - search_contents.csv
-    - readme.txt
 - img
     - (图片文件)
 - js
     - baidu_o.js
     - baidu.js
     - echarts.min.js
-    - readme.txt
 - src
     - info.py
     - location.py
     - sol_keyword.py
-    - readme.txt
 - index_o.html
 - index.html
 - link_o.html
 - link.html
+- anylsis_o.html
+- anylsis.html
+- about.html
+- service.html
 - README.md
 - requirements.txt
 
@@ -149,7 +158,7 @@
 <div class='div_desc'>
 
 - html + css + js ( echarts, baidu )
-- python ( numpy, pandas, jieba, nltk )
+- python ( numpy, pandas, jieba, nltk, paddlehub, paddle )
 - 预计添加: SQL, python ( hanlp, pytorch )
 
 </div>
@@ -164,7 +173,8 @@
 
 <div class='div_desc'>
 
-- 问题聚焦
+- 高精度情感分析
+- 评论观点抽取
 
 </div>
 
