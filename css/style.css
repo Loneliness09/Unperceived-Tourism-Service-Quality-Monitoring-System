@@ -218,7 +218,7 @@ body {
   height: 74%;
   width: 91%;
   margin: 1% 4%;
-  background: rgba(1, 202, 217, .2);
+  background: none;
 }
 
 .lefttoday_tit p.fl {
@@ -642,7 +642,6 @@ body {
 /* .box_pad{ margin: 3px 20px; } */
 
 .mrboxtm-map {
-  background: #051655;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: top center;
@@ -654,7 +653,6 @@ body {
 }
 
 .hdmrboxtm-map {
-  background: #051655;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: top center;
