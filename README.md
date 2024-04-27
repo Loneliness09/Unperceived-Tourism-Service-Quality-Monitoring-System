@@ -51,7 +51,11 @@
 *示例:*
 
 
-<img src='./img/example/屏幕截图 2024-04-24 191000.png' style='width: 100%;'>
+<img src='./img/example/demo.png' style='width: 100%;'>
+
+---
+
+<img src='./img/example/demo1.png' style='width: 100%;'>
 
 邮箱: 2583346094@qq.com
 
@@ -123,12 +127,10 @@
     - baidu_o.js
     - baidu.js
     - echarts.min.js
-    - readme.txt
 - src
     - info.py
     - location.py
     - sol_keyword.py
-    - readme.txt
 - index_o.html
 - index.html
 - link_o.html
