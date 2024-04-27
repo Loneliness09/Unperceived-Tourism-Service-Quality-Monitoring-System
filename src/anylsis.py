@@ -25,10 +25,13 @@ def senta(locate='净月潭', num=1000):
                         .apply(lambda x: re.sub(r'\[[^\]]+\]', '', x)) \
                         .apply(lambda x: x.replace('\n', '')) \
                         .apply(lambda x: x.replace('"', '')) \
+                        .apply(lambda x: x.replace('\\', '')) \
                         .apply(lambda x: '' if len(x) < 10 or '活跃账号' in x else x) \
                         .dropna()
 
-        data['nickname'] = data['nickname'].apply(lambda x: str(x).replace('"', ''))      
+        data['nickname'] = data['nickname'] \
+                    .apply(lambda x: str(x).replace('"', ''))     \
+                    .apply(lambda x: x.replace('\\', '')) 
         data = data[data['content'] != '']
         texts = data['content'].tolist()
         names = data['nickname'].tolist()

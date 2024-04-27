@@ -104,7 +104,7 @@ video = contents.copy()
 video.sort_values(by='create_time', inplace=True, ascending=False)
 
 
-now = max(comments['create_time']) - 24 * 60 * 60 * 2
+now = max(comments['create_time']) - 24 * 60 * 60 * 1
 delta = 30 * 24 * 60 * 60
 
 num = len(comments.loc[(comments['create_time'] >= now - delta * 2) & (comments['create_time'] < now)])
