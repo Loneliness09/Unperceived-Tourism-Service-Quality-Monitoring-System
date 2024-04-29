@@ -348,7 +348,7 @@ info.sys_info('写入完成')
 with open('./js/cloud_o.js', 'r', encoding='utf-8') as f:
     cl_data = f.readlines()
 
-info.sys_info('更新云图')
+info.sys_info('生成词云图')
 info.gap()
 cl = 0
 for i, line in enumerate(cl_data):
